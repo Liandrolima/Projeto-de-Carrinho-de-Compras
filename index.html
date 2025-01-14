@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Loja Online</h1>
+    <button id="login-btn">Login</button>
+  </header>
+
+  <main>
+    <section id="catalog">
+      <h2>Catálogo de Produtos</h2>
+      <div id="product-list"></div>
+    </section>
+
+    <section id="cart">
+      <h2>Carrinho de Compras</h2>
+      <div id="cart-items"></div>
+      <p id="total">Total: R$ 0.00</p>
+      <button id="checkout-btn">Finalizar Compra</button>
+    </section>
+  </main>
+
+  <div id="login-modal" class="modal">
+    <form id="login-form">
+      <h3>Login</h3>
+      <label for="username">Usuário:</label>
+      <input type="text" id="username" required>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
