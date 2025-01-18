@@ -1,0 +1,30 @@
+/* src/components/Header.css */
+
+header {
+    background-color: #282c34;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  header button {
+    background-color: #61dafb;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  header button:hover {
+    background-color: #21a1f1;
+  }
+  
