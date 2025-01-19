@@ -1,0 +1,53 @@
+/* src/components/ProductsList.css */
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.cart {
+  margin-top: 30px;
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+}
+
+.cart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart li {
+  margin-bottom: 10px;
+}
+
+.cart h3 {
+  margin-top: 20px;
+}
+
+.cart button {
+  background-color: #ff4d4f; /* Cor de fundo vermelho */
+  color: #fff; /* Texto branco */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 8px 12px; /* Espaçamento interno */
+  font-size: 14px; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de mão ao passar */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.cart button:hover {
+  background-color: #d9363e; /* Cor mais escura ao passar o mouse */
+}
+
+.cart button:active {
+  background-color: #a32a2d; /* Cor ao clicar */
+  transform: scale(0.95); /* Efeito de clique */
+}

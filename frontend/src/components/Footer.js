@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer style={{ padding: "10px", backgroundColor: "#282c34", color: "white", textAlign: "center" }}>
-      <p>© 2025 Projeto de Carrinho de Compras</p>
+    <footer className="footer">
+      <p>&copy; 2025 Loja Virtual. Todos os direitos reservados.</p>
     </footer>
   );
 };

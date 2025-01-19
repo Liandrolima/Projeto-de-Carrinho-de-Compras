@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
-import { CartContext } from "../CartContext";
+// src/components/Header.js
+
+import React, { useContext } from 'react';
+import { CartContext } from '../CartContext';
 import './Header.css';
 
-
 const Header = () => {
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(CartContext); // Acessando o estado do carrinho
 
   return (
-    <header>
-      <h1>Meu Carrinho de Compras</h1>
-      <button>🛒 Carrinho ({cart.length})</button>
+    <header className="header">
+      <h1>Loja Virtual</h1>
+      <div className="cart-info">
+        <span>Carrinho: {cart.reduce((total, product) => total + product.quantity, 0)} itens</span>
+      </div>
     </header>
   );
 };
 
 export default Header;
-

@@ -1,67 +1,65 @@
-/* src/components/Cart.css */
+.cart {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+  margin: 1rem;
+  max-width: 400px;
+}
 
-.cart-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cart-container h2 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .cart-items {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .cart-item .item-name {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .cart-item .item-price {
-    font-size: 1rem;
-    color: #28a745;
-  }
-  
-  .cart-item button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .cart-item button:hover {
-    background-color: #c82333;
-  }
-  
-  .cart-total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  .cart-total .total-label {
-    color: #333;
-  }
-  
-  .cart-total .total-price {
-    color: #28a745;
-  }
-  
+.cart h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.cart-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cart-item button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cart-item button:hover {
+  background-color: #e60000;
+}
+
+.cart h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.cart button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.cart button:hover {
+  background-color: #45a049;
+}

@@ -1,61 +1,75 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const axios = require('axios');
+const bodyParser = require('body-parser');
 
 const app = express();
-app.use(express.json());
-app.use(cors());
+const PORT = 5000;
 
-// Conexão ao MongoDB
-mongoose.connect('mongodb://localhost:27017/shopping-cart', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// Configuração para o body-parser
+app.use(bodyParser.json());
 
-// Modelos
-const User = require('./models/User');
-const Product = require('./models/Product');
+// Usuários simulados (em vez de usar banco de dados)
+const users = [
+    { id: 1, email: 'user1@example.com', password: bcrypt.hashSync('senha123', 10) },
+    { id: 2, email: 'user2@example.com', password: bcrypt.hashSync('senha456', 10) }
+];
 
-// Rotas
-app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, password: hashedPassword });
-    await user.save();
-    res.status(201).send('Usuário registrado com sucesso!');
-});
+// Chave secreta para o JWT
+const SECRET_KEY = 'sua_chave_secreta_segura';
 
-app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(401).send('Credenciais inválidas');
-    }
-    const token = jwt.sign({ userId: user._id }, 'secret', { expiresIn: '1h' });
-    res.json({ token });
-});
-
-app.get('/products', async (req, res) => {
-    const products = await Product.find();
-    res.json(products);
-});
-
-app.post('/checkout', async (req, res) => {
-    const { order } = req.body;
+// Middleware de autenticação
+const authenticate = (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return res.status(401).json({ message: 'Acesso negado! Faça login.' });
 
     try {
-        const response = await axios.post(
-            'https://api.aftership.com/v4/notifications',
-            { order },
-            { headers: { 'aftership-api-key': 'YOUR_AFTERSHIP_API_KEY' } }
-        );
-        res.json({ message: 'Pedido confirmado!', data: response.data });
+        const decoded = jwt.verify(token, SECRET_KEY);
+        req.user = decoded;
+        next();
     } catch (error) {
-        res.status(500).send('Erro ao confirmar o pedido');
+        res.status(403).json({ message: 'Token inválido ou expirado.' });
     }
+};
+
+// Rota de login
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    // Validações básicas
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
+    }
+
+    // Verificar se o usuário existe
+    const user = users.find(u => u.email === email);
+    if (!user) {
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+
+    // Verificar a senha
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Senha incorreta.' });
+    }
+
+    // Gerar um token
+    const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+
+    res.status(200).json({ message: 'Login bem-sucedido.', token });
 });
 
-app.listen(5000, () => console.log('Backend rodando na porta 5000'));
+// Rota para acessar produtos (apenas usuários autenticados)
+app.get('/produtos', authenticate, (req, res) => {
+    const produtos = [
+        { id: 1, nome: 'Produto 1', preco: 100 },
+        { id: 2, nome: 'Produto 2', preco: 200 }
+    ];
+
+    res.status(200).json({ message: 'Produtos disponíveis:', produtos });
+});
+
+// Inicialização do servidor
+app.listen(PORT, () => {
+    console.log(`Backend rodando na porta ${PORT}`);
+});
