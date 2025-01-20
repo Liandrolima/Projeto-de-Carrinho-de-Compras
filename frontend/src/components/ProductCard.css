@@ -1,9 +1,27 @@
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
+.product-card {
+  background-color: #f9f9f9; /* Cor de fundo para os cards */
+  border: 1px solid #ccc; /* Borda dos cards */
+  border-radius: 8px; /* Arredondar cantos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  padding: 16px; /* Espaçamento interno */
+  width: 200px; /* Largura fixa dos cards */
+  text-align: center; /* Centralizar conteúdo do card */
 }
+.product-card button {
+  margin-top: 8px; /* Espaçamento acima do botão */
+  padding: 8px 12px; /* Tamanho do botão */
+  background-color: #007bff; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  border: none; /* Remover borda */
+  border-radius: 4px; /* Arredondar botão */
+  cursor: pointer; /* Alterar o cursor ao passar por cima */
+}
+.product-card button:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+
+
 
 .cart {
   margin-top: 40px;

@@ -1,10 +1,13 @@
 /* src/components/ProductsList.css */
 
-.product-list {
+.products-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha, se necessário */
+  gap: 16px; /* Espaçamento entre os cards */
+  justify-content: center; /* Centraliza os cards horizontalmente */
+  padding: 16px; /* Espaçamento interno da lista */
 }
+
 
 .product-card {
   border: 1px solid #ccc;
