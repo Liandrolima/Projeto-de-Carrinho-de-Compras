@@ -25,11 +25,54 @@ header h1 {
   }
 }
 
+.cart-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #D50032;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;  
+}
 #cart-icon {
   font-size: 25px; 
   display: inline-block; /* Certifique-se de que o ícone pode ser animado */
   animation: rotateCart 3s linear infinite; /* Aplica a animação */
-  
+  cursor: pointer;
 }
 
+.cart-modal button {
+  background-color: #4CAF50; /* Cor de fundo verde para os botões */
+  color: white; /* Cor do texto */
+  border: none; /* Remove a borda padrão */
+  margin: 2px;
+  padding: 10px 20px; /* Espaçamento interno */
+  display: flex; /* Flexbox para centralizar o conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */  
+  text-align: center;  
+  font-size: 12px; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  border-radius: 5px; /* Borda arredondada */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animação suave ao passar o mouse */
+}
 
+/* Botões na modal de carrinho */
+
+
+/* Botão de "Fechar" */
+.cart-actions button:last-child {
+  background-color: #9E9E9E; /* Cor cinza para fechar */  
+
+}
+
+.cart-actions button:last-child:hover {
+  background-color: #757575; /* Cor mais escura para o hover */
+}
+
+.cart-actions button:last-child:active {
+  background-color: #616161; /* Cor mais escura para o clique */
+}

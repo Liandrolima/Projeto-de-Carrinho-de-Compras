@@ -16,21 +16,16 @@
   border-bottom: 1px solid #ddd;
 }
 
-.cart-item button {
-  padding: 6px 10px;
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.cart-item button:hover {
-  background-color: #c9302c;
-}
-
 .cart {
   padding: 20px;
+  
+}
+
+#cart-cart {
+  font-size: 25px; 
+  display: inline-block; /* Certifique-se de que o ícone pode ser animado */
+  animation: rotateCart 3s linear infinite; /* Aplica a animação */
+  cursor: pointer;
 }
 
 .cart ul {
@@ -45,11 +40,19 @@
 }
 
 .cart button {
-  padding: 10px 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+  background-color: #4CAF50; /* Cor de fundo verde para os botões */
+  color: white; /* Cor do texto */
+  border: none; /* Remove a borda padrão */
+  margin: 2px;
+  padding: 10px 20px; /* Espaçamento interno */
+  display: flex; /* Flexbox para centralizar o conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */  
+  text-align: center;  
+  font-size: 12px; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  border-radius: 5px; /* Borda arredondada */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animação suave ao passar o mouse */
+  
 }
 
 .cart button:hover {

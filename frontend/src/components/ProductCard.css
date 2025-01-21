@@ -5,13 +5,17 @@
   flex-direction: column;
   border-radius: 10px;
   padding: 15px;
-  margin: 5px;
+  margin-bottom: 10px;
+  margin-top: -20px;
   text-align: center;
   width: 200px; /* Largura fixa para os cartões */
-  height: 500px; /* Altura ajustada para dar mais espaço à descrição */
+  height: 460px; /* Altura ajustada para dar mais espaço à descrição */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
+  transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 

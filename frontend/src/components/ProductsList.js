@@ -15,9 +15,8 @@ const ProductsList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Produtos</h2>
-      <div className="product-list"> {/* Aqui adicionamos a classe product-list */}
+    <div className="fundo"> {/* Aqui está a div que envolve o conteúdo, com o fundo parallax */}
+      <div className="product-list">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
         ))}

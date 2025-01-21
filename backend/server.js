@@ -1,22 +1,21 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+import 'dotenv/config';
+import express from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import bodyParser from 'body-parser';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+const SECRET_KEY = process.env.SECRET_KEY || 'fallback_secret_key';
 
 // Configuração para o body-parser
 app.use(bodyParser.json());
 
-// Usuários simulados (em vez de usar banco de dados)
+// Usuários simulados (substitua por um banco de dados real)
 const users = [
     { id: 1, email: 'user1@example.com', password: bcrypt.hashSync('senha123', 10) },
     { id: 2, email: 'user2@example.com', password: bcrypt.hashSync('senha456', 10) }
 ];
-
-// Chave secreta para o JWT
-const SECRET_KEY = 'sua_chave_secreta_segura';
 
 // Middleware de autenticação
 const authenticate = (req, res, next) => {
@@ -36,30 +35,26 @@ const authenticate = (req, res, next) => {
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    // Validações básicas
     if (!email || !password) {
         return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
     }
 
-    // Verificar se o usuário existe
     const user = users.find(u => u.email === email);
     if (!user) {
         return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
 
-    // Verificar a senha
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
         return res.status(401).json({ message: 'Senha incorreta.' });
     }
 
-    // Gerar um token
     const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
 
     res.status(200).json({ message: 'Login bem-sucedido.', token });
 });
 
-// Rota para acessar produtos (apenas usuários autenticados)
+// Rota protegida para listar produtos
 app.get('/produtos', authenticate, (req, res) => {
     const produtos = [
         { id: 1, nome: 'Produto 1', preco: 100 },
@@ -67,6 +62,12 @@ app.get('/produtos', authenticate, (req, res) => {
     ];
 
     res.status(200).json({ message: 'Produtos disponíveis:', produtos });
+});
+
+// Middleware para tratamento de erros
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Erro interno do servidor.' });
 });
 
 // Inicialização do servidor

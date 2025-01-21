@@ -1,4 +1,30 @@
-h2 {
-  color: black;
+.fundo {
+  position: relative;
+  background: url('https://www.transparenttextures.com/patterns/asfalt.png') no-repeat center center fixed;
+  background-size: cover;
+  padding: 50px 0;
+  text-align: center;
+  animation: parallaxScroll 10s linear infinite; /* Animação de movimento */
+}
+
+@keyframes parallaxScroll {
+  0% {
+    background-position: 0 0; /* Começa na posição original */
+  }
+  100% {
+    background-position: 100% 100%; /* Move o fundo */
+  }
+}
+
+/* Lista de produtos - Flexbox para organizar os cards */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  position: relative;
 }
 

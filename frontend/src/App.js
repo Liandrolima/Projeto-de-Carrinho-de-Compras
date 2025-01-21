@@ -4,6 +4,7 @@ import Header from './components/Header';
 import ProductsList from './components/ProductsList';
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Login setLoggedIn={setLoggedIn} />
         )}
       </main>
+      <Footer />
     </CartProvider>
   );
 };
