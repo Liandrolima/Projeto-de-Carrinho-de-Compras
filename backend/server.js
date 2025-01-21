@@ -3,10 +3,12 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
+import axios from 'axios';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const SECRET_KEY = process.env.SECRET_KEY || 'fallback_secret_key';
+const AFTERSHIP_API_KEY = process.env.AFTERSHIP_API_KEY; // Agora utilizando a variável de ambiente
 
 // Configuração para o body-parser
 app.use(bodyParser.json());
@@ -54,14 +56,63 @@ app.post('/login', async (req, res) => {
     res.status(200).json({ message: 'Login bem-sucedido.', token });
 });
 
-// Rota protegida para listar produtos
+// Rota para obter os produtos (exemplo)
 app.get('/produtos', authenticate, (req, res) => {
+    console.log('Rota /produtos foi chamada'); // Log para depuração
+
     const produtos = [
         { id: 1, nome: 'Produto 1', preco: 100 },
-        { id: 2, nome: 'Produto 2', preco: 200 }
+        { id: 2, nome: 'Produto 2', preco: 200 },
     ];
 
-    res.status(200).json({ message: 'Produtos disponíveis:', produtos });
+    console.log('Produtos:', produtos); // Exibe os produtos no console para depuração
+
+    res.status(200).json({ produtos });
+});
+
+// Função para enviar a notificação de confirmação de pedido via AfterShip API
+const sendOrderConfirmationNotification = async (orderId, email) => {
+    try {
+        const response = await axios.post(
+            'https://api.aftership.com/v4/notifications',
+            {
+                notification: {
+                    emails: [email],
+                    events: ['order_confirmed'],
+                    order_id: orderId,
+                },
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'aftership-api-key': AFTERSHIP_API_KEY,
+                },
+            }
+        );
+
+        console.log('Notificação de pedido enviada:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao enviar notificação:', error);
+        throw error;
+    }
+};
+
+// Endpoint de exemplo para confirmação de pedido
+app.post('/confirmar-pedido', authenticate, async (req, res) => {
+    const { orderId, email } = req.body;
+
+    if (!orderId || !email) {
+        return res.status(400).json({ message: 'ID do pedido e e-mail são obrigatórios.' });
+    }
+
+    try {
+        // Chama a função para enviar a confirmação do pedido
+        const notificationResponse = await sendOrderConfirmationNotification(orderId, email);
+        res.status(200).json({ message: 'Pedido confirmado e notificação enviada!', data: notificationResponse });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao processar pedido e notificação', error: error.message });
+    }
 });
 
 // Middleware para tratamento de erros

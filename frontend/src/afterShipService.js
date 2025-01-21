@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Substitua com sua chave de API do AfterShip
-const AFTERSHIP_API_KEY = 'asat_3368131e1c9e4d4b9167efca9c152cc1';
+// Substitua com sua chave de API do AfterShip, se necessário, ou pegue de um arquivo de ambiente
+const AFTERSHIP_API_KEY = process.env.AFTERSHIP_API_KEY || 'asat_3368131e1c9e4d4b9167efca9c152cc1';
 
 const sendOrderConfirmation = async (orderId, email) => {
   try {
@@ -17,7 +17,7 @@ const sendOrderConfirmation = async (orderId, email) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'aftership-api-key': asat_3368131e1c9e4d4b9167efca9c152cc1,
+          'aftership-api-key': AFTERSHIP_API_KEY,
         },
       }
     );
