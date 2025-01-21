@@ -1,12 +1,35 @@
-.header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #D50032; /* Vermelho Cereja */
   color: #fff;
   padding: 1rem;
 }
 
-.cart-info {
-  font-size: 1rem;
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; /* Tamanho do título */
+  font-weight: 700; /* Negrito para o título */
+  margin: 0;
+  margin-bottom: 10px;
 }
+
+/* Animação para o carrinho girar indefinidamente */
+@keyframes rotateCart {
+  0% {
+    transform: rotate(0deg); /* Posição inicial */
+  }
+  100% {
+    transform: rotatey(360deg); /* Posição final */
+  }
+}
+
+#cart-icon {
+  font-size: 25px; 
+  display: inline-block; /* Certifique-se de que o ícone pode ser animado */
+  animation: rotateCart 3s linear infinite; /* Aplica a animação */
+  
+}
+
+

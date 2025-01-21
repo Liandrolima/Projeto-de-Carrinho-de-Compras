@@ -9,30 +9,42 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  // Função para adicionar um produto ao carrinho
   const addToCart = (product) => {
-    setCartItems((prevItems) => [...prevItems, product]);
+    const newProduct = {
+      ...product,
+      uniqueKey: `${product.id}-${Date.now()}`, // Garantindo que o uniqueKey seja único
+    };
+    console.log('Adicionando ao carrinho:', newProduct);
+    setCartItems((prevItems) => [...prevItems, newProduct]);
   };
 
-  const removeFromCart = (productToRemove) => {
-    // Remove apenas o item específico
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== productToRemove.id)
-    );
+  // Função para remover um produto do carrinho
+  const removeFromCart = (uniqueKey) => {
+    console.log('Removendo item com uniqueKey:', uniqueKey);
+    setCartItems((prevItems) => {
+      const newItems = prevItems.filter((item) => item.uniqueKey !== uniqueKey);
+      console.log('Itens no carrinho após remoção:', newItems);
+      return newItems;
+    });
   };
 
+  // Função para limpar o carrinho
   const clearCart = () => {
     setCartItems([]);
   };
 
+  // Função para calcular o total dos itens no carrinho
   const calculateTotal = () => {
-    // Calcula o total somando o preço de todos os itens no carrinho
-    return cartItems.reduce((total, item) => total + item.price, 0);
+    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    return total;
   };
 
+  // Cálculo do total (diretamente no CartContext, sem useEffect)
+  const total = calculateTotal();
+
   return (
-    <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, calculateTotal }}
-    >
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, calculateTotal, total }}>
       {children}
     </CartContext.Provider>
   );

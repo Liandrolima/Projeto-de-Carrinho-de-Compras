@@ -9,3 +9,29 @@ h1, h2, h3, p {
   margin: 0;
   padding: 5px;
 }
+
+/* Fundo cereja para o layout */
+.header, .footer, .cart, .product-card {
+  background-color: #f8bbd0; /* Cor de fundo cereja */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.cart-info {
+  font-size: 1rem;
+}
+
+/* Nova regra para garantir a exibição correta dos cartões lado a lado */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; /* Garantir distribuição adequada */
+  gap: 20px; /* Espaçamento entre os cards */
+}

@@ -17,7 +17,7 @@ const ProductsList = () => {
   return (
     <div>
       <h2>Produtos</h2>
-      <div>
+      <div className="product-list"> {/* Aqui adicionamos a classe product-list */}
         {products.map((product) => (
           <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
         ))}
