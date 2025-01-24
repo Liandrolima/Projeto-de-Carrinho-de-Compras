@@ -1,40 +1,42 @@
+/* CSS atualizado para integrar a imagem de fundo do login */
+
 .login {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-top: 40px;
-    background: #F1F1F1 url('https://www.transparenttextures.com/patterns/asfalt.png');
-  }
-  
-  .password-input-container {
-    position: relative;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    padding: 7px;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .eye-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-  
-  .eye-icon i {
-    font-size: 20px;
-    color: #007bff;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 40px;
+  background: #F1F1F1 url('./imagem/DALL·E\ 2025-01-24\ 18.16.16\ -\ A\ purely\ artistic\ and\ decorative\ image\ inspired\ by\ fashion.\ The\ design\ features\ a\ vibrant\ cherry\ red\ color\ palette\ with\ abstract\ flowing\ shapes\,\ luxur.webp') no-repeat center center;
+  background-size: cover;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.eye-icon i {
+  font-size: 20px;
+  color: #007bff;
+}
