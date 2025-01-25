@@ -7,6 +7,7 @@ const Login = ({ setLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false); // Estado para visibilidade da senha
   const [isRegistering, setIsRegistering] = useState(false); // Estado para alternar entre login e cadastro
   const [registeredUsers, setRegisteredUsers] = useState([]); // Estado para armazenar os usuários registrados
+  
 
   // Manipula o login
   const handleLogin = (e) => {
@@ -41,7 +42,9 @@ const Login = ({ setLoggedIn }) => {
   // Alterna a visibilidade da senha
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  };
+  };  
+
+  
 
   return (
     <div className="login">
@@ -82,7 +85,14 @@ const Login = ({ setLoggedIn }) => {
         {isRegistering ? 'Já tem uma conta? Faça login' : 'Não tem uma conta? Cadastre-se'}
       </button>
     </div>
+    
   );
 };
 
 export default Login;
+
+
+
+
+
+

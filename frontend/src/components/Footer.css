@@ -1,6 +1,11 @@
-.footer {
+footer {
   background-color: #c51162; /* Cor complementar cereja */
   color: white;
-  padding: 20px;
   text-align: center;
+  padding: 0px;
+  width: 100%; /* Para ocupar toda a largura da tela */
+  position: fixed; /* Fixa o footer no lugar */
+  bottom: 0; /* Posiciona no final da janela */
+  left: 0;
+  z-index: 10;
 }

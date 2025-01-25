@@ -1,4 +1,14 @@
-
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('imagem/viva-moda.webp');
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+  background-size: cover; /* Faz a imagem cobrir o espaço do footer */
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+   
+}
 
 .login {
   max-width: 400px;
@@ -8,7 +18,13 @@
   border-radius: 8px;
   margin-top: 40px;
   background: #F1F1F1 url('https://www.transparenttextures.com/patterns/asfalt.png');
+  animation: aparecerLentamente 5s ease-in-out forwards;
 }
+
+@keyframes aparecerLentamente {
+  0% { opacity: 0; }   /* Início totalmente transparente */
+  100% { opacity: 1; } /* Totalmente visível ao final */
+} 
 
 .password-input-container {
   position: relative;
@@ -39,3 +55,7 @@ input[type="password"] {
   font-size: 20px;
   color: #007bff;
 }
+
+
+
+

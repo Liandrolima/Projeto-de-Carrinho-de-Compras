@@ -11,7 +11,7 @@ h1, h2, h3, p {
 }
 
 /* Fundo cereja para o layout */
-.header, .footer, .cart, .product-card {
+.header, .cart, .product-card {
   background-color: #f8bbd0; /* Cor de fundo cereja */
 }
 
@@ -35,3 +35,22 @@ h1, h2, h3, p {
   justify-content: space-evenly; /* Garantir distribuição adequada */
   gap: 20px; /* Espaçamento entre os cards */
 }
+
+/* App.css */
+
+
+.welcome-text-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 50px;
+}
+
+.curved-text {
+  font-size: 36px;
+  font-family: 'Arial', sans-serif;
+  fill: #ffffff; /* Cor do texto */
+  animation: aparecerLentamente 5s ease-in-out forwards;
+}
+
+

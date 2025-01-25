@@ -1,31 +1,18 @@
-.cart-container {
-  padding: 16px;
-  background-color: #f9f9f9;
-}
-
-.cart-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
 
 .cart {
-  padding: 20px;
+  padding: 30px;
   
+}
+
+#pos {
+  margin-top: -20px;
 }
 
 #cart-cart {
   font-size: 25px; 
   display: inline-block; /* Certifique-se de que o ícone pode ser animado */
   animation: rotateCart 3s linear infinite; /* Aplica a animação */
-  cursor: pointer;
+  
 }
 
 .cart ul {
